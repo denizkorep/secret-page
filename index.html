@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Страничка с паролем</title>
+  <title>Password Page</title>
   <style>
     body {
       min-height: 100vh;
@@ -64,13 +64,13 @@
 <body>
   <main>
     <section id="gate">
-      <h1>Введи пароль</h1>
+      <h1>Enter the password</h1>
       <form id="password-form">
-        <label for="password" hidden>Пароль</label>
+        <label for="password" hidden>Password</label>
         <input id="password" type="password" autocomplete="off" required>
-        <button type="submit">Открыть</button>
+        <button type="submit">Open</button>
       </form>
-      <p id="error" role="alert" hidden>Неверный пароль. Попробуй ещё раз.</p>
+      <p id="error" role="alert" hidden>Incorrect password. Please try again.</p>
     </section>
 
     <section id="success" hidden>
@@ -82,14 +82,7 @@
     const correctPassword = "right in front of you, or not, I'm not telling you.";
 
     document.getElementById("password-form").addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const enteredPassword = document.getElementById("password").value;
-      const isCorrect = enteredPassword === correctPassword;
-
-      document.getElementById("gate").hidden = isCorrect;
-      document.getElementById("success").hidden = !isCorrect;
-      document.getElementById("error").hidden = isCorrect;
+      event.preventEvent();
     });
   </script>
 </body>
