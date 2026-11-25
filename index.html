@@ -82,12 +82,12 @@
     const correctPassword = "right in front of you, or not, I'm not telling you.";
 
     document.getElementById("password-form").addEventListener("submit", (event) => {
+      event.preventDefault();
       const enteredPassword = document.getElementById("password").value;
       const isCorrect = enteredPassword === correctPassword;
       document.getElementById("gate").hidden = isCorrect;
       document.getElementById("success").hidden = !isCorrect;
       document.getElementById("error").hidden = isCorrect;
-      event.preventEvent();
     });
   </script>
 </body>
