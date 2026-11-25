@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Страничка с паролем</title>
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      box-sizing: border-box;
+      font: 1rem/1.5 system-ui, sans-serif;
+      color: #242424;
+      background: #f4f1fb;
+    }
+
+    main {
+      width: min(100%, 28rem);
+      padding: 2rem;
+      box-sizing: border-box;
+      text-align: center;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 2rem #25134a1a;
+    }
+
+    form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    input, button {
+      padding: 0.75rem;
+      font: inherit;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+    }
+
+    button {
+      cursor: pointer;
+      color: white;
+      background: #6542a6;
+      border-color: #6542a6;
+    }
+
+    #error {
+      color: #b42318;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="gate">
+      <h1>Введи пароль</h1>
+      <form id="password-form">
+        <label for="password" hidden>Пароль</label>
+        <input id="password" type="password" autocomplete="off" required>
+        <button type="submit">Открыть</button>
+      </form>
+      <p id="error" role="alert" hidden>Неверный пароль. Попробуй ещё раз.</p>
+    </section>
+
+    <section id="success" hidden>
+      <p>Congrats! Say “puzzles are cool ig” to prove that you made it!</p>
+    </section>
+  </main>
+
+  <script>
+    const correctPassword = "right in front of you, or not, I'm not telling you.";
+
+    document.getElementById("password-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const enteredPassword = document.getElementById("password").value;
+      const isCorrect = enteredPassword === correctPassword;
+
+      document.getElementById("gate").hidden = isCorrect;
+      document.getElementById("success").hidden = !isCorrect;
+      document.getElementById("error").hidden = isCorrect;
+    });
+  </script>
+</body>
+</html>
